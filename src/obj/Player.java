@@ -1,16 +1,7 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package obj;
 
 import java.time.LocalDate;
 
-/**
- *
- * @author dawm
- */
 public class Player {
     private String name;
     private LocalDate birth;
@@ -23,6 +14,18 @@ public class Player {
     public Player() {
     }
 
+    public Player(String name, Team team) {
+        this.name = name;
+        this.team = team;
+    }
+
+    public Player(String name, int nbaskets, int nassists, int nrebounds) {
+        this.name = name;
+        this.nbaskets = nbaskets;
+        this.nassists = nassists;
+        this.nrebounds = nrebounds;
+    }
+    
     public Player(String name, LocalDate birth, int nbaskets, int nassists, int nrebounds, String position, Team team) {
         this.name = name;
         this.birth = birth;
@@ -88,6 +91,9 @@ public class Player {
     public void setTeam(Team team) {
         this.team = team;
     }
-    
-    
+
+    @Override
+    public String toString() {
+        return "Player{" + "name=" + name + ", birth=" + birth + ", nbaskets=" + nbaskets + ", nassists=" + nassists + ", nrebounds=" + nrebounds + ", position=" + position + ", team=" + team + '}';
+    } 
 }
