@@ -75,6 +75,14 @@ public class BasketDao {
         ps.close();
     }
     
+    public void removePlayerFromTable(String n) throws SQLException{
+        String remove = "delete from player where name=?";
+        PreparedStatement ps =conexion.prepareStatement(remove);
+        ps.setString(1, n);
+        ps.executeUpdate();
+        ps.close();
+    }
+    
     public void pruebaExcepcion() throws SQLException{
         
     }

@@ -19,7 +19,7 @@ public class BasketJDBC {
             Team t1 = new Team("Zetakar", "Barcelona", LocalDate.of(2016, 1, 27));
             System.out.println("Insertando equipo: " + t1.getName());
             try {
-                //insersion de un team a la base de datos
+                //{{01}}insersion de un team a la base de datos
                 basketDAO.insertarTeam(t1);
                 System.out.println("Equipo insertado: " + t1.getName());
             } catch (SQLException ex) {
@@ -41,7 +41,7 @@ public class BasketJDBC {
             Player p1 = new Player("Kelvin", LocalDate.of(1996, 1, 27), 0, 20, 5, "defensa", t1);
             System.out.println("Insertando jugador: " + p1.getName());
             try {
-                //insersion de un jugador a la base de datos
+                //{{02}}insersion de un jugador a la base de datos
                 basketDAO.insertPlayer(p1);
                 System.out.println("Jugador insertado: " + p1.getName() + "| En equipo: " + p1.getTeam().getName());
             } catch (SQLException ex) {
@@ -61,7 +61,7 @@ public class BasketJDBC {
             //-------------------------------------------------------------------------------------------------//
             Player p1a = new Player("Kelvin", 100, 1000, 10);
             try {
-                //Objeto jugador con nombre de un jugador existente y numeros a modificar
+                //{{03}}Objeto jugador con nombre de un jugador existente y numeros a modificar
                 basketDAO.modifyPlayerBAR(p1a);
                 System.out.println("Se ha modificado los baskets,assistencias y rebotes del jugador: " + p1a.getName());
             } catch (SQLException ex) {
@@ -71,11 +71,20 @@ public class BasketJDBC {
             Player p1b = new Player("Kelvin", t2);
             p1b = new Player("Algo",t1);
             try {
-                //Objeto jugador con nombre de un jugador existente y equipo a modificar
+                //{{04}}Objeto jugador con nombre de un jugador existente y equipo a modificar
                 basketDAO.modifyPlayerTeam(p1b);
                 System.out.println("Se ha modificado el equipo del jugador: " + p1b.getName());
             } catch (SQLException ex) {
                 System.out.println("Error en la modificacion 2: " + ex.getMessage());
+            }
+            //-------------------------------------------------------------------------------------------------//
+            String borrarKelvin = "Kelvin";
+            try {
+                //{{05}}Borrar jugador con nombre X
+                basketDAO.removePlayerFromTable(borrarKelvin);
+                System.out.println("Se ha borrado el jugador Kelvin");
+            } catch (SQLException ex) {
+                System.out.println("Error en la eliminacion:"+ex.getMessage());
             }
         } catch (SQLException ex) {
             System.out.println("Error al entrar en la base de datos: " + ex.getMessage());
